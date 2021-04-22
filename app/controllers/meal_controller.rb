@@ -2,7 +2,7 @@ class MealController < ApplicationController
 
     get '/meals' do
         @meals = current_user.meals
-        erb :index
+        erb :'/meals/index'
     end
 
     get '/meals/:id' do

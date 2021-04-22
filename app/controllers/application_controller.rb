@@ -19,13 +19,13 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     current_user = User.new(username: params["username"], password: params["password"])
-    if current_user.username.blank? || current_user.password.blank? || User.find(params["username"])
+    if current_user.username.blank? || current_user.password.blank? || User.find_by(username: params["username"])
       "Sorry, it looks like there was an issue with your signup attempt" #this isn't showing up on the website
-      redirect '/signup'
+      redirect to '/signup'
     else
       current_user.save
-      session["user_id"] = current_user.id
-      redirect '/meals'
+      session[:user_id] = current_user.id
+      redirect to '/meals'
     end
   end
 
@@ -34,18 +34,19 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-    user = User.find_by(username: params["username"])
-    if user && user.authenticate(params["password"])
-      redirect '/meals'
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect to '/:id'
     else
       "There was an issue with your login attempt."
-      redirect '/login'
+      redirect to '/login'
     end
   end
 
   get '/logout' do
     session.clear
-    redirect '/'
+    redirect to '/'
   end
 
   get '/:id' do
