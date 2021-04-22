@@ -49,7 +49,8 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/:id' do
-    @user = User.find_by_id(id: params[:id])
+    @user = User.find_by(params)
+    erb :"users/show"
   end
 
   helpers do

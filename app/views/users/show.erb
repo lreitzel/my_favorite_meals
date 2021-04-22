@@ -1,0 +1,7 @@
+<h2>Welcome to My Favorite Meals, <%=@user.name%>!</h2>
+<h6>Here is a list of your favorite meals:</h6>
+<ol>
+    <%@user.meals.each do |meal|%>
+        <li><%=meal.title%></li>
+    <%end%>
+</ol>
