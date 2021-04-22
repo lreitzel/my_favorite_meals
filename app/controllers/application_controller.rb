@@ -34,6 +34,23 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
+    user = User.find_by(username: params["username"])
+    if user && user.authenticate(params["password"])
+      redirect '/meals'
+    else
+      "There was an issue with your login attempt."
+      redirect '/login'
+    end
+  end
+
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
+    end
   end
 
 
