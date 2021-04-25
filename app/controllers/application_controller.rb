@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
     else
       current_user.save
       session[:user_id] = current_user.id
-      redirect to '/login'
+      redirect to '/reviews'
     end
   end
 
