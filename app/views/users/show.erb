@@ -1,7 +1,4 @@
-<h2>Welcome to My Favorite Meals, <%=@user.name%>!</h2>
-<h6>Here is a list of your favorite meals:</h6>
-<ol>
-    <%@user.meals.each do |meal|%>
-        <li><%=meal.title%></li>
-    <%end%>
-</ol>
+<h2>Welcome to My Favorite Meals, <%=current_user.username%>!</h2>
+<p>Click <a href='/meals'>here</a> to see all your current meals!</p>
+<p>Click <a href='/meals/new'>here</a> to create a new meal!</p>
+<h6><a href='/logout'>Log Out</a></p>

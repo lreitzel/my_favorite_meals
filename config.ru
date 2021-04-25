@@ -7,7 +7,7 @@ end
 Rack::MethodOverride
 
 use MealController
-use RestaurantController
+use ReviewController
 run ApplicationController
 #need to add other controllers in here but with Use, not Run
 
