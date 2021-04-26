@@ -1,0 +1,10 @@
+#update a review
+<h2>Update your Review!</h2>
+<form action="/reviews/<%=@review.id%>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <p>Title:</p>
+    <input type="text" name="review[title]" id="review_title" value="<%= @review.title %>"
+    <p>Rating: <%= @review.rating %></p>
+    <p>Date of Visit: <%= @review.day_of_visit %></p>
+    <p>Review: <%= @review.review_body %></p>
+</form>
