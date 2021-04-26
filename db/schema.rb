@@ -12,22 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_04_22_223547) do
 
-  create_table "meals", force: :cascade do |t|
-    t.string "title"
-    t.integer "restaurant_id"
-  end
-
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.integer "rating"
+    t.string "meal"
+    t.string "location"
     t.date "day_of_visit"
     t.text "review_body"
     t.integer "user_id"
-    t.integer "meal_id"
   end
 
   create_table "users", force: :cascade do |t|

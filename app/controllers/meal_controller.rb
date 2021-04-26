@@ -19,6 +19,7 @@ class MealController < ApplicationController
             erb :'/meals/new'
         else
             meal.save
+            meal.id = Review.meal_id #need to connect this meal to the review I'm about to create
             erb :'/reviews/new'
         end
     end
