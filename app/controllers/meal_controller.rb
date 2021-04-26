@@ -24,8 +24,12 @@ class MealController < ApplicationController
     end
 
     get '/meals/:id' do
-        @meal = current_user.meals.find(params["id"])
-        erb :'/meals/show'
+        if logged_in?
+            @meal = current_user.meals.find(params["id"])
+            erb :'/meals/show'
+        else
+            redirect to '/users/login'
+        end
     end
 
     get '/meals/:id/edit' do

@@ -1,1 +1,3 @@
-Hello World
+<% current_user.meals.each do |meal| %>
+    <%= meal.title %>
+<% end %>
