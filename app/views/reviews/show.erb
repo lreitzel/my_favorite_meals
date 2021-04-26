@@ -1,5 +1,5 @@
-<% current_user.reviews.each do |review| %>
-    <ol>
-        <li><%= review.title %></li>
-    </ol>
-<% end %>
+<h2>Here is your Review:</h2>
+<p>Review: <%= @review.title %></p>
+<p>Overall Rating: <%= @review.rating %></p>
+<p>Date: <%= @review.day_of_visit %></p>
+<p>Details: <%= @review.review_body %></p>

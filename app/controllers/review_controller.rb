@@ -13,7 +13,7 @@ class ReviewController < ApplicationController
         end
     end
 
-    post '/reviews/' do
+    post '/reviews' do
         review = Review.new(params)
         if review.title.blank? || review.review_body.blank?
             erb :'/reviews/new'
@@ -22,7 +22,16 @@ class ReviewController < ApplicationController
             review.user_id = session[:user_id]
             current_user.reviews << review
             review.save
-            erb :'/reviews'
+            erb :'/reviews/index'
+        end
+    end
+
+    get '/reviews/:id' do
+        if logged_in?
+            @review = Review.find(params["id"])
+            erb :'/reviews/show'
+        else
+            redirect to '/login'
         end
     end
 

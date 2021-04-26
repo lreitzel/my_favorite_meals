@@ -1,1 +1,8 @@
-#show all reviews of logged in user
+
+<h2>Here are all your current reviews!</h2>
+
+<% current_user.reviews.each do |review| %>
+    <ol>
+        <li><a href="/reviews/<%= review.id %>"><%= review.title %></a></li>
+    </ol>
+<% end %>
