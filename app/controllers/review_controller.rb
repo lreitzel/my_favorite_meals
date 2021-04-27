@@ -16,6 +16,10 @@ class ReviewController < ApplicationController
 
     post '/reviews' do
         @review = Review.new(params[:review])
+        if !params[meal][title].empty?
+            @meal = Meal.new(params[:meal])
+            current_user.meals << @meal
+        end
         if @review.title.blank? || @review.body.blank?
             erb :'/reviews/new'
         else
