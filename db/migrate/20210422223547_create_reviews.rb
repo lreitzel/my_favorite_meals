@@ -7,6 +7,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.date :date
       t.text :body
       t.integer :user_id
+      t.integer :meal_id
     end
   end
 end

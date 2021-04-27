@@ -6,6 +6,7 @@ class ReviewController < ApplicationController
     end
 
     get '/reviews/new' do
+        @meals = Meal.all
         if logged_in?
             erb :'/reviews/new'
         else
@@ -14,15 +15,15 @@ class ReviewController < ApplicationController
     end
 
     post '/reviews' do
-        review = Review.new(params)
-        if review.title.blank? || review.body.blank?
+        @review = Review.new(params[:review])
+        if @review.title.blank? || @review.body.blank?
             erb :'/reviews/new'
         else
-            review.user = current_user
-            review.user_id = session[:user_id]
-            current_user.reviews << review
-            review.save
-            erb :'/reviews/index'
+            @review.user = current_user
+            @review.user_id = session[:user_id]
+            current_user.reviews << @review
+            @review.save
+            erb :"reviews/index"
         end
     end
 
