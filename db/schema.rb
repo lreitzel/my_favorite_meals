@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2021_04_22_223547) do
     t.string "title"
     t.string "meal"
     t.string "location"
-    t.date "day_of_visit"
-    t.text "review_body"
+    t.date "date"
+    t.text "body"
     t.integer "user_id"
   end
 

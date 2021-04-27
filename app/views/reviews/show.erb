@@ -1,6 +1,19 @@
 <h2>Here is your Review:</h2>
 <p>Review Title: <%= @review.title %></p>
 <p>Meal: <%= @review.meal %></p>
-<p>Overall Rating: <%= @review.rating %></p>
-<p>Date: <%= @review.day_of_visit %></p>
-<p>Details: <%= @review.review_body %></p>
+<p>Location: <%= @review.location %></p>
+<p>Date: <%= @review.date %></p>
+<p>Details: <%= @review.body %></p>
+
+<% if @review.user == current_user %>
+    <p><a href='/reviews/<%= @review.id %>/edit'>Edit this Review</a></p>
+
+    <form method="POST" action="/reviews/<%= @review.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Review">
+    </form>
+    <br>
+
+    <p><a href='/logout'>Log Out</a></p>
+
+<% end %>

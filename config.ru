@@ -4,9 +4,9 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
-Rack::MethodOverride
+use Rack::MethodOverride
 
-use MealController
+use UserController
 use ReviewController
 run ApplicationController
 #need to add other controllers in here but with Use, not Run
