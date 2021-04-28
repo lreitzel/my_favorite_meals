@@ -14,12 +14,12 @@ class MealController < ApplicationController
     end
 
     post '/meals' do
-        meal = Meal.new(params)
-        if meal.title.blank?
+        @meal = Meal.new(params)
+        if @meal.title.blank?
             erb :'/meals/new'
         else
-            meal.save
-            meal.id = Review.meal_id #need to connect this meal to the review I'm about to create
+            @meal.save
+            # session[:meal_id] = @meal.id
             erb :'/reviews/new'
         end
     end
