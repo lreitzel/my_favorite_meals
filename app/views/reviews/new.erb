@@ -1,23 +1,11 @@
-<h2>Create your Review here:</h2><br><br>
+<h2>Create your Review for <%= @meal.title %>:</h2><br><br>
 <form action="/reviews" method="POST">
+    <p><input type="hidden" name="review[meal_id]" value="<%= @meal.id %>"></p>
+    <p>Review Title: <input type="text" name="review[title]"></p>
+    <p>Location: <input type="text" name="review[location]"></p>
+    <p>Date of Meal: <input type="date" name="review[date]"></p>
+    <p>Review: <textarea type="text" name="review[body]"></textarea></p><br><br>
 
-    <h3>Select from this list of Meals or Create a New Meal to Review!</h3><br>
-        <h4>Meal Options:</h4><br>
-        <% @meals.each do |meal| %>
-            <select name="meal" id="<%= @meal.id %>">
-                <option value="" selected="selected"><%= meal.title %></option>
-            </select>
-        <% end %><br>
-
-        <h4>Create a New Meal:</h4><br>
-        <p>Meal Title: <input type="text" name="meal[title]"></p>
-
-
-        <p>Review Title: <input type="text" name="review[title]"></p>
-        <p>Location: <input type="text" name="review[location]"></p>
-        <p>Date of Meal: <input type="date" name="review[date]"></p>
-        <p>Review: <input type="text" name="review[body]"></p><br><br>
-
-        <input type="submit" value="Create Review">
+    <input type="submit" value="Create Review">
 </form>
 
