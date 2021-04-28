@@ -15,6 +15,7 @@ class MealController < ApplicationController
 
     post '/meals' do
         @meal = Meal.new(params)
+        wrong_user?
         if @meal.title.blank?
             erb :'/meals/new'
         else
@@ -34,13 +35,19 @@ class MealController < ApplicationController
     end
 
     get '/meals/:id/edit' do
+        wrong_user?
         erb :'/meals/edit'
     end
 
     put '/meals/:id' do
+        wrong_user?
     end
 
     delete '/meals/:id' do
+        @meal = Meal.find(params[:id])
+        wrong_user?
+        @meal.destroy
+        redirect to '/meals'
     end
     
 end
