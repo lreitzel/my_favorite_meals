@@ -56,10 +56,4 @@ class ReviewController < ApplicationController
         redirect to '/reviews'
     end
 
-    def wrong_user?
-        if @review.user != current_user
-            redirect to '/login'
-        end
-    end
-
 end
