@@ -26,21 +26,26 @@ class MealController < ApplicationController
     end
 
     get '/meals/:id' do
-        if logged_in?
-            @meal = current_user.meals.find(params["id"])
-            erb :'/meals/show'
-        else
-            redirect to '/users/login'
-        end
+        wrong_user?
+        @meal = current_user.meals.find(params["id"])
+        erb :'/meals/show'
     end
 
     get '/meals/:id/edit' do
+        @meal = Meal.find(params[:id])
         wrong_user?
         erb :'/meals/edit'
     end
 
     put '/meals/:id' do
+        @meal = Meal.find(params[:id])
         wrong_user?
+        if @meal.title.blank?
+            redirect to "/meals/#{@meal.id}"
+        else
+            @meal.update(params)
+            redirect to "/meals/#{@meal.id}"
+        end
     end
 
     delete '/meals/:id' do
