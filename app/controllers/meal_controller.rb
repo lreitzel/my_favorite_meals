@@ -22,8 +22,8 @@ class MealController < ApplicationController
     end
 
     get '/meals/:id' do
-        wrong_user?
         @meal = current_user.meals.find(params["id"])
+        wrong_user?
         erb :'/meals/show'
     end
 
@@ -45,6 +45,12 @@ class MealController < ApplicationController
         wrong_user?
         @meal.destroy
         redirect to '/meals'
+    end
+
+    def wrong_user?
+        if @meal.user != current_user
+            redirect to '/login'
+        end
     end
     
 end
