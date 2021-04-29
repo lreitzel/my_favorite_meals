@@ -16,13 +16,9 @@ class MealController < ApplicationController
     post '/meals' do
         @meal = Meal.new(params)
         wrong_user?
-        if @meal.title.blank?
-            erb :'/meals/new'
-        else
-            @meal.save
-            # session[:meal_id] = @meal.id
-            erb :'/reviews/new'
-        end
+        @meal.save
+        # session[:meal_id] = @meal.id
+        erb :'/reviews/new'
     end
 
     get '/meals/:id' do
@@ -37,15 +33,11 @@ class MealController < ApplicationController
         erb :'/meals/edit'
     end
 
-    put '/meals/:id' do
+    patch '/meals/:id' do
         @meal = Meal.find(params[:id])
         wrong_user?
-        if @meal.title.blank?
-            redirect to "/meals/#{@meal.id}"
-        else
-            @meal.update(params)
-            redirect to "/meals/#{@meal.id}"
-        end
+        @meal.update(params)
+        redirect to "/meals/#{@meal.id}"
     end
 
     delete '/meals/:id' do
