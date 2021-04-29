@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, 'user security'
+    set :session_secret, 'skibbidy_paps'
   end
 
   get "/" do
@@ -22,12 +22,6 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       User.find(session[:user_id])
-    end
-
-    def wrong_user?
-      if @review.user != current_user
-          redirect to '/login'
-      end
     end
   end
 
