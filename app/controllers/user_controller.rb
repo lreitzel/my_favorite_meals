@@ -1,5 +1,9 @@
 class UserController < ApplicationController
 
+  get '/homepage' do
+    erb :"users/home"
+  end
+  
   get '/signup' do
     erb :"users/new"
   end
