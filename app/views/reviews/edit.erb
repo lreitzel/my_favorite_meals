@@ -2,13 +2,13 @@
 <h2>Update your Review for <%= @meal.title %>!</h2>
 <form action="/reviews/<%= @review.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <label for="review[title]">Title:</label>
+    Title:<br>
     <input type="text" name="review[title]" id="review_title" value="<%= @review.title %>"><br><br>
-    <label for="review[location]">Location:</label> 
+    Location:<br>
     <input type="text" name="review[location]" id="review_location" value="<%= @review.location %>"><br><br>
-    <label for="review[date]">Date:</label> 
+    Date:<br> 
     <input type="date" name="review[date]" id="review_date" value="<%= @review.date %>"><br><br>
-    <label for="review[body]">Review:</label><br><br>
+    Review:<br>
     <textarea type="text" name="review[body]" id="review_body" value="<%= @review.body %>"></textarea><br><br>
     <input type="submit" value="Edit Review">
 </form>
