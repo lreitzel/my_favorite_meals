@@ -14,7 +14,8 @@ class ReviewController < ApplicationController
     end
 
     post '/reviews' do
-        @review = Review.new(params[:review])
+        @review = Review.new(params)
+        wrong_user?
         if @review.title.blank? || @review.body.blank?
             erb :'/reviews/new'
         else
@@ -28,12 +29,9 @@ class ReviewController < ApplicationController
     end
 
     get '/reviews/:id' do
-        if logged_in?
-            @review = Review.find(params["id"])
-            erb :'/reviews/show'
-        else
-            redirect to '/login'
-        end
+        wrong_user?
+        @review = Review.find(params["id"])
+        erb :'/reviews/show'
     end
 
     get '/reviews/:id/edit' do
