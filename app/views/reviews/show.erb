@@ -6,14 +6,12 @@
 <p>Details: <%= @review.body %></p>
 
 <% if @review.user == current_user %>
-    <p><a href='/reviews/<%= @review.id %>/edit'>Edit this Review</a></p>
+    <a href='/reviews/<%= @review.id %>/edit'><button>Edit this Review</button></a>
 
     <form method="POST" action="/reviews/<%= @review.id %>">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete Review">
     </form>
     <br>
-
-    <p><a href='/logout'>Log Out</a></p>
 
 <% end %>
