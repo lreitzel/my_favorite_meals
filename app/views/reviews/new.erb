@@ -1,7 +1,7 @@
-<h2>Create your Review for <%= @meal.title %>:</h2><br><br>
+<h2>Create your Review:</h2><br><br>
 <form action="/reviews" method="POST">
-    <p><input type="hidden" name="review[meal_id]" value="<%= @meal.id %>"></p>
     <p>Review Title: <input type="text" name="review[title]"></p>
+    <p>Meal: <input type="text" name="review[meal]"></p>
     <p>Location: <input type="text" name="review[location]"></p>
     <p>Date of Meal: <input type="date" name="review[date]"></p>
     <p>Review: <textarea type="text" name="review[body]"></textarea></p><br><br>

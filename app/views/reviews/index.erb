@@ -3,6 +3,6 @@
 
 <% current_user.reviews.each do |review| %>
     <ol>
-        <li><a href="/reviews/<%= review.id %>"><%= review.title %></a></li>
+        <li><a href="/reviews/<%= review.id %>"><%= review.title %></a></li><br>
     </ol>
 <% end %>
