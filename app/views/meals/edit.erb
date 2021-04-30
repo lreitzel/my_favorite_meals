@@ -1,7 +1,0 @@
-<h2>Edit your meal here!</h2>
-
-<form action='/meals/<%= @meal.id %>' method="POST">
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-    Meal: <input type="text" name="meal[title]" id="meal_title" value="<%= @meal.title %>">
-    <input type="submit" value="Edit Meal">
-</form>

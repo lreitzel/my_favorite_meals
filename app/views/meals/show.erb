@@ -1,8 +1,0 @@
-<h2><%= @meal.title %></h2><br>
-
-<p>Here are all the reviews you have for <%= @meal.title %>:</p>
-<ol>
-    <% @meal.reviews.each do |review| %>
-        <li><a href='/reviews/<%= review.id %>'><%= review.title %></a></li>
-    <% end %>
-</ol>
