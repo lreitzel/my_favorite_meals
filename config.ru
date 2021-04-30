@@ -7,7 +7,6 @@ end
 use Rack::MethodOverride
 
 use UserController
-use MealController
 use ReviewController
 run ApplicationController
 #need to add other controllers in here but with Use, not Run
