@@ -1,12 +1,12 @@
-<h2>Here is your Review:</h2>
-<p>Review Title: <%= @review.title %></p>
-<p>Meal: <%= @review.meal %></p>
-<p>Location: <%= @review.location %></p>
-<p>Date: <%= @review.date %></p>
-<p>Details: <%= @review.body %></p>
+<h2>Here is your Review: <%= @review.title %></h2>
+<br>
+<label for="review[meal]">Meal:  </label><%= @review.meal %><br><br>
+<label for="review[location]">Location:  </label><%= @review.location %><br><br>
+<label for="review[date]">Date:  </label><%= @review.date %><br><br>
+<label for="review[body]">Description:  </label><%= @review.body %><br><br>
 
 <% if @review.user == current_user %>
-    <a href='/reviews/<%= @review.id %>/edit'><button>Edit this Review</button></a><br><br>
+    <a href="/reviews/<%= @review.id %>/edit"><button>Edit this Review</button></a><br><br>
 
     <form method="POST" action="/reviews/<%= @review.id %>">
         <input type="hidden" name="_method" value="DELETE">

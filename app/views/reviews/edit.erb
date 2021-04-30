@@ -1,18 +1,17 @@
-
 <h2>Update your Review Here!</h2>
+
 <form action="/reviews/<%= @review.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
-    Title:<br>
+    <label for="review[title]">Title:</label><br>
     <input type="text" name="review[title]" id="review_title" value="<%= @review.title %>"><br><br>
-    Meal:<br>
+    <label for="review[meal]">Meal:</label><br>
     <input type="text" name="review[meal]" id="review_meal" value="<%= @review.meal %>"><br><br>
-    Location:<br>
+    <label for="review[location]">Location:</label><br>
     <input type="text" name="review[location]" id="review_location" value="<%= @review.location %>"><br><br>
-    Date:<br> 
+    <label for="review[date]">Date:</label><br> 
     <input type="date" name="review[date]" id="review_date" value="<%= @review.date %>"><br><br>
-    Review:<br>
-    <input type="text" name="review[body]" id="review_body" value="<%= @review.body %>"><br><br>
+    <label for="review[body]">Review:</label><br>
+    <textarea rows="8" cols="50" name="review[body]"><%= @review.body %></textarea><br><br>
     <input type="submit" value="Edit Review">
 </form>
 
-#need to fix the text box for the review body

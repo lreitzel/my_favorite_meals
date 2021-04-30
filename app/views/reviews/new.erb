@@ -1,10 +1,15 @@
 <h2>Create your Review:</h2><br><br>
 <form action="/reviews" method="POST">
-    <p>Review Title: <input type="text" name="review[title]"></p>
-    <p>Meal: <input type="text" name="review[meal]"></p>
-    <p>Location: <input type="text" name="review[location]"></p>
-    <p>Date of Meal: <input type="date" name="review[date]"></p>
-    <p>Review: <textarea type="text" name="review[body]"></textarea></p><br><br>
+    <label for="review[title]">Review Title:</label>
+    <input type="text" name="review[title]"><br><br>
+    <label for="review[meal]">Meal:</label> 
+    <input type="text" name="review[meal]"><br><br>
+    <label for="review[location]">Location:</label>
+    <input type="text" name="review[location]"><br><br>
+    <label for="review[date]">Date of Meal:</label>
+    <input type="date" name="review[date]"><br><br>
+    <label for="review[body]">Review:</label><br><br>
+    <textarea rows="8" cols="50" name="review[body]"></textarea><br><br>
 
     <input type="submit" value="Create Review">
 </form>
