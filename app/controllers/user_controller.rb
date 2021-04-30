@@ -10,8 +10,8 @@ class UserController < ApplicationController
 
   post '/signup' do
     current_user = User.new(username: params[:username], password: params[:password], name: params[:name])
-    if User.find_by(username: params[:username])
-      redirect to '/'
+    if current_user.username.blank? || current_user.password.blank? || current_user.name.blank? || User.find_by(username: params[:username])
+      redirect to '/signup'
     else
       current_user.save
       session[:user_id] = current_user.id
