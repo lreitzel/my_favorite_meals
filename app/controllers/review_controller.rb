@@ -14,13 +14,13 @@ class ReviewController < ApplicationController
     end
 
     post '/reviews' do
-        @review = Review.new(params[:review])
+        review = Review.new(params[:review])
         if logged_in? && !Review.find_by(title: params[:title])
-            @review.user = current_user
-            @review.user_id = session[:user_id]
-            current_user.reviews << @review
-            @review.save
-            erb :"/reviews/index"
+            review.user = current_user
+            review.user_id = session[:user_id]
+            current_user.reviews << review
+            review.save
+            redirect to '/reviews'
         else
             erb :"/reviews/new"
         end
