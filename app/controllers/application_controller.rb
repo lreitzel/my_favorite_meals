@@ -8,6 +8,16 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, 'skibbidy_paps'
+    set :show_exceptions, false
+  end
+
+  not_found do
+    status 404
+    erb :error
+  end
+
+  error ActiveRecord::RecordNotFound do
+    redirect to "/"
   end
 
   get "/" do
