@@ -16,18 +16,20 @@
   <body>
 
     <div class="wrapper">
+      <div class="sidebar">
+        <% if logged_in? %>
+          <a href='/homepage'>My Home Page</a><br>
+          <a href='/reviews'>My Reviews</a><br>
+          <a href='/logout'>Log Out</a><br>
+        <% else %>
+          <a href='/login'>Login</a><br>
+          <a href='signup'>Sign Up</a><br>
+        <% end %>
+      </div>
 
         <%= yield %>
 
-        <div class="sidebar">
-          <% if logged_in? %>
-            <a href='/homepage'>My Home Page</a><br>
-            <a href='/reviews'>My Reviews</a><br>
-            <a href='/logout'>Log Out</a><br>
-          <% else %>
-            <a href='/login'>Login</a><br>
-            <a href='signup'>Sign Up</a><br>
-          <% end %>
+        <div class="opener">
         </div>
       
 
